@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetSeleniumExample", "DotNetSeleniumExample\DotNetSeleniumExample.csproj", "{5283E8EC-FD55-40BC-A3F4-F50BAC9ACBE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetSeleniumExample", "DotNetSeleniumExample\DotNetSeleniumExample.csproj", "{5283E8EC-FD55-40BC-A3F4-F50BAC9ACBE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SauceDemo", "SauceDemo\SauceDemo.csproj", "{EE7CBC6C-93C9-41D8-93EB-5E89AC6B8896}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SauceDemo", "SauceDemo\SauceDemo.csproj", "{EE7CBC6C-93C9-41D8-93EB-5E89AC6B8896}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHelper", "TestHelper\TestHelper.csproj", "{919989F3-BED5-4C08-9A20-0763A29CCE9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestHelper", "TestHelper\TestHelper.csproj", "{919989F3-BED5-4C08-9A20-0763A29CCE9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetSeleniumSpecFlowExample", "DotNetSeleniumSpecFlowExample\DotNetSeleniumSpecFlowExample.csproj", "{408846DD-DA5A-4371-AD2B-2D45F8A569F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{919989F3-BED5-4C08-9A20-0763A29CCE9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{919989F3-BED5-4C08-9A20-0763A29CCE9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{919989F3-BED5-4C08-9A20-0763A29CCE9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{408846DD-DA5A-4371-AD2B-2D45F8A569F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{408846DD-DA5A-4371-AD2B-2D45F8A569F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{408846DD-DA5A-4371-AD2B-2D45F8A569F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{408846DD-DA5A-4371-AD2B-2D45F8A569F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
