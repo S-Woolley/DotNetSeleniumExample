@@ -15,13 +15,19 @@ namespace SauceDemo.Pages
         private By MenuButtonSelector => By.Id("react-burger-menu-btn");
         private By MenuLogoutButtonSelector => By.Id("logout_sidebar_link");
 
+        private By ShopppingCartBadgeSelector => By.ClassName("shopping_cart_badge");
+
+        private By AddToButtonSelector(string itemName) => By.XPath($"//*[@class='inventory_item'][.//*[text()='{itemName}']]//button[text()='Add to cart']");
+
         #endregion selectors
 
         #region elements
 
-        private IWebElement MenuButton => driver.FindElement(MenuButtonSelector);
+        private IWebElement MenuButton => Driver.FindElement(MenuButtonSelector);
 
-        private IWebElement MenuLogoutButton => driver.FindElement(MenuLogoutButtonSelector);
+        private IWebElement MenuLogoutButton => Driver.FindElement(MenuLogoutButtonSelector);
+
+        private IWebElement ShoppingCartBadge => Driver.FindElement(ShopppingCartBadgeSelector);
 
         #endregion elements
 
@@ -33,11 +39,33 @@ namespace SauceDemo.Pages
 
         public Login Logout()
         {
-            var currentUrl = driver.Url;
+            var currentUrl = Driver.Url;
             MenuButton.Click();
             MenuLogoutButton.Click();
-            driver.WaitForUrlToChange(currentUrl);
-            return new Login(driver);
+            Driver.WaitForUrlToChange(currentUrl);
+            return new Login(Driver);
+        }
+
+        public void ClickAddToCart(string itemName)
+        {
+            var addToCartButton = Driver.FindElement(AddToButtonSelector(itemName));
+            addToCartButton.Click();
+        }
+
+        public bool IsShoppingCartBadgeDisplayed()
+        {
+            if (!Driver.DoesElementExist(ShopppingCartBadgeSelector)) 
+            {
+                return false;
+            }
+
+            return ShoppingCartBadge.Displayed;
+        }
+
+        public int GetShoppingCartItemCount()
+        {
+            var itemCount = ShoppingCartBadge.Text;
+            return Convert.ToInt32(itemCount);
         }
     }
 }

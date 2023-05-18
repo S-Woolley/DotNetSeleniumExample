@@ -21,7 +21,7 @@ namespace DotNetSeleniumExample.Tests
         [Test]
         public void NoLoginNameAndPassword()
         {
-            var page = Login.Visit(driver);
+            var page = Login.Visit(Driver);
             page.ClickLoginButton();
             Assert.IsTrue(page.IsErrorMessageVisible(), "Error Message Visible");
             Assert.AreEqual("Epic sadface: Username is required", page.GetErrorMessage(), "Error Message Text");
@@ -30,7 +30,7 @@ namespace DotNetSeleniumExample.Tests
         [Test]
         public void NoPassword()
         {
-            var page = Login.Visit(driver);
+            var page = Login.Visit(Driver);
             page.SetUserName(standardUser);
             page.ClickLoginButton();
 
@@ -41,7 +41,7 @@ namespace DotNetSeleniumExample.Tests
         [Test]
         public void IncorrectPassword()
         {
-            var page = Login.Visit(driver);
+            var page = Login.Visit(Driver);
             page.SetUserName(standardUser);
             page.SetPassword("Wrong");
             page.ClickLoginButton();
@@ -54,7 +54,7 @@ namespace DotNetSeleniumExample.Tests
         [Test]
         public void SuccesfulLogin()
         {
-            var page = Login.Visit(driver);
+            var page = Login.Visit(Driver);
             page.SetUserName(standardUser);
             page.SetPassword(password);
             var homePage = page.ClickLoginButton<HomePage>();

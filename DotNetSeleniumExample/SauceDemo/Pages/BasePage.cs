@@ -10,13 +10,13 @@ namespace SauceDemo.Pages
 {
     public abstract class BasePage
     {
-        protected IWebDriver driver;
+        protected IWebDriver Driver { get; private set; }
 
-        public string PageURL => driver.Url;
+        public string PageURL => Driver.Url;
 
         protected BasePage(IWebDriver driver) 
         { 
-            this.driver = driver;
+            this.Driver = driver;
         }
 
     }

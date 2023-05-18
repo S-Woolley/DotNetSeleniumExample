@@ -14,13 +14,13 @@ namespace SauceDemo.Pages
 
         #region elements
 
-        private IWebElement LoginField => driver.FindElement(LoginFieldSelector);
+        private IWebElement LoginField => Driver.FindElement(LoginFieldSelector);
 
-        private IWebElement PasswordField => driver.FindElement(PasswordFieldSelector);
+        private IWebElement PasswordField => Driver.FindElement(PasswordFieldSelector);
 
-        private IWebElement LoginButton => driver.FindElement(LoginButtonSelector);
+        private IWebElement LoginButton => Driver.FindElement(LoginButtonSelector);
 
-        private IWebElement ErrorMessage => driver.FindElement(ErrorMessageSelector);
+        private IWebElement ErrorMessage => Driver.FindElement(ErrorMessageSelector);
 
         #endregion elements
 
@@ -33,6 +33,14 @@ namespace SauceDemo.Pages
         {
             driver.Navigate().GoToUrl("https://www.saucedemo.com/");
             return new Login(driver);
+        }
+
+        public static HomePage VisitAndLogin(IWebDriver driver, string userName, string password)
+        {
+            var page = Visit(driver);
+            page.SetUserName(userName);
+            page.SetPassword(password);
+            return page.ClickLoginButton<HomePage>();
         }
 
         public void SetUserName(string userName)
@@ -53,12 +61,12 @@ namespace SauceDemo.Pages
         public T ClickLoginButton<T>() where T : BasePage
         {
             LoginButton.Click();
-            return (T)Activator.CreateInstance(typeof(T), driver);
+            return (T)Activator.CreateInstance(typeof(T), Driver);
         }
 
         public bool IsErrorMessageVisible()
         {
-            return (driver.DoesElementExist(ErrorMessageSelector) & ErrorMessage.Displayed);
+            return (Driver.DoesElementExist(ErrorMessageSelector) & ErrorMessage.Displayed);
         }
 
         public string GetErrorMessage()

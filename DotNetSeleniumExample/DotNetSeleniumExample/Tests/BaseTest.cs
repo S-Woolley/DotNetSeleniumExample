@@ -14,7 +14,7 @@ namespace DotNetSeleniumExample.Tests
 {
     public abstract class BaseTest
     {
-        protected IWebDriver driver { get; private set; }
+        protected IWebDriver Driver { get; private set; }
 
         private string AssemblyLocation => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
@@ -28,8 +28,8 @@ namespace DotNetSeleniumExample.Tests
                 Directory.Delete(TestName, true);
             }
             Directory.CreateDirectory(TestName);
-            driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            Driver = new ChromeDriver();
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }
 
         [TearDown]
@@ -40,8 +40,8 @@ namespace DotNetSeleniumExample.Tests
                 try
                 {
                     TestContext.Out.WriteLine("Test Failed: Grabbing Evidence");
-                    driver.SaveScreenshot($@"{AssemblyLocation}\{TestName}\Failure");
-                    driver.SavePageSource($@"{AssemblyLocation}\{TestName}\Failure");
+                    Driver.SaveScreenshot($@"{AssemblyLocation}\{TestName}\Failure");
+                    Driver.SavePageSource($@"{AssemblyLocation}\{TestName}\Failure");
                 }
                 catch (Exception ex) 
                 {
@@ -49,7 +49,7 @@ namespace DotNetSeleniumExample.Tests
                 }
                 
             }
-            driver.Quit();
+            Driver.Quit();
         }
     }
 }

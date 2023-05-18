@@ -2,7 +2,6 @@
 
 Site application login page.
 
-@tag1
 Scenario: Login With No UserName or Password
 	Given A login page
 	When The login button is clicked

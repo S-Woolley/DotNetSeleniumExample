@@ -15,7 +15,7 @@ namespace DotNetSeleniumExample.Tests
         [SetUp]
         public void BeforeAll()
         {
-            var page = Login.Visit(driver);
+            var page = Login.Visit(Driver);
             page.SetUserName("standard_user");
             page.SetPassword("secret_sauce");
             homePage = page.ClickLoginButton<HomePage>();

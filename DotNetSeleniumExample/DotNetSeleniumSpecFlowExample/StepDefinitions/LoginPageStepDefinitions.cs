@@ -8,21 +8,19 @@ using TechTalk.SpecFlow;
 namespace DotNetSeleniumSpecFlowExample.StepDefinitions
 {
     [Binding]
-    public class LoginPageStepDefinitions
+    public class LoginPageStepDefinitions : BaseDefinition
     {
         private Login? page;
-        IWebDriver driver;
 
-        public LoginPageStepDefinitions(BrowserDriver browserDriver) 
+        public LoginPageStepDefinitions(BrowserDriver browserDriver) : base(browserDriver) 
         {
-            driver = browserDriver.Current;
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
         }
 
         [Given(@"A login page")]
         public void GivenALoginPage()
         {
-            page = Login.Visit(driver);
+            page = Login.Visit(Driver);
         }
 
         [When(@"The login button is clicked")]

@@ -10,18 +10,18 @@ namespace DotNetSeleniumSpecFlowExample.Drivers
 {
     public class BrowserDriver : IDisposable
     {
-        private readonly Lazy<IWebDriver> _currentWebDriverLazy;
-        private bool _isDisposed;
+        private readonly Lazy<IWebDriver> currentWebDriverLazy;
+        private bool isDisposed;
 
         public BrowserDriver()
         {
-            _currentWebDriverLazy = new Lazy<IWebDriver>(CreateWebDriver);
+            currentWebDriverLazy = new Lazy<IWebDriver>(CreateWebDriver);
         }
 
         /// <summary>
         /// The Selenium IWebDriver instance
         /// </summary>
-        public IWebDriver Current => _currentWebDriverLazy.Value;
+        public IWebDriver Current => currentWebDriverLazy.Value;
 
         /// <summary>
         /// Creates the Selenium web driver (opens a browser)
@@ -44,17 +44,17 @@ namespace DotNetSeleniumSpecFlowExample.Drivers
         /// </summary>
         public void Dispose()
         {
-            if (_isDisposed)
+            if (isDisposed)
             {
                 return;
             }
 
-            if (_currentWebDriverLazy.IsValueCreated)
+            if (currentWebDriverLazy.IsValueCreated)
             {
                 Current.Quit();
             }
 
-            _isDisposed = true;
+            isDisposed = true;
         }
     }
 }
